@@ -1,5 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import injectSheet from 'react-jss';
+import { useDispatch } from 'react-redux';
+
+import { loadShopbackData } from 'actions/ShopbackActionCreator';
 
 import {
   CategoryList,
@@ -12,12 +15,17 @@ const stylsheet = {
   }
 }
 
-const App = (props) => {
+const AppContainer = (props) => {
   const [category, setCategory] = useState("");
+  const dispatch = useDispatch();
 
   const onCategoryChanged = useCallback((category) => {
     setCategory(Object.assign({}, category));
   }, [])
+
+  useEffect(() => {
+    dispatch(loadShopbackData());
+  }, [dispatch])
 
   return <>
     <CategoryList onChange={onCategoryChanged} />
@@ -25,4 +33,4 @@ const App = (props) => {
   </>
 }
 
-export default injectSheet(stylsheet)(App);
+export default injectSheet(stylsheet)(AppContainer);

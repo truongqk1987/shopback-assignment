@@ -1,1 +1,4 @@
-export { CategoryList as default } from './CategoryList';
+import CategoryList from './CategoryList';
+export default {
+    CategoryList
+}

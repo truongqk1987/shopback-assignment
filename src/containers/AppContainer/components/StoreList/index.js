@@ -1,1 +1,4 @@
-export { StoreList as default } from './StoreList';
+import StoreList from './StoreList';
+export default {
+    StoreList
+}
