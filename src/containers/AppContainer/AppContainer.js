@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import injectSheet from 'react-jss';
 
 import {
@@ -14,10 +13,15 @@ const stylsheet = {
 }
 
 const App = (props) => {
+  const [category, setCategory] = useState("");
+
+  const onCategoryChanged = useCallback((category) => {
+    setCategory(Object.assign({}, category));
+  }, [])
 
   return <>
-    <CategoryList />
-    <StoreList />
+    <CategoryList onChange={onCategoryChanged} />
+    <StoreList category={category} />
   </>
 }
 

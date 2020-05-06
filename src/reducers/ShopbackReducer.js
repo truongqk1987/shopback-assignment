@@ -1,19 +1,14 @@
-import { LOAD_ORDER_LIST_SUCCESS, LOAD_ORDER_LIST_ERROR } from 'globalConstants/actions';
+import { LOAD_SHOPBACK_DATA, UPDATE_SELECTED_CATEGORY } from 'actions/ShopbackActionCreator';
 
-const orderReducer = (state={orderList:[], waitingOrders: 0, totalOrders: 0}, action) => {
+const shopbackReducer = (state={}, action) => {
   switch (action.type) {
-    case LOAD_ORDER_LIST_SUCCESS: 
-      const { orderList, waitingOrders, totalOrders } = action.payload;
-      return { ...state, orderList, waitingOrders, totalOrders}
-    case LOAD_ORDER_LIST_ERROR:
-      return { ...state, orderList: null, error: action.error}
+    case LOAD_SHOPBACK_DATA: 
+      return { ...state }
+    case UPDATE_SELECTED_CATEGORY:
+      return { ...state }
     default:
       return state;
   }
 }
 
-export const orderListSelector = (state) => state.order.orderList;
-export const waitingOrdersSelector = (state) => state.order.waitingOrders;
-export const totalOrdersSelector = (state) => state.order.totalOrders;
-
-export default orderReducer;
+export default shopbackReducer;

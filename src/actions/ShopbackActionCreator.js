@@ -1,15 +1,16 @@
-import { LOAD_ORDER_LIST_SUCCESS, LOAD_ORDER_LIST_ERROR } from 'globalConstants/actions';
+export const LOAD_SHOPBACK_DATA = 'LOAD_SHOPBACK_DATA';
+export const UPDATE_SELECTED_CATEGORY = 'UPDATE_SELECTED_CATEGORY';
 
-
-const OrderListActionCreator = {
-  getOrderListSuccess: (payload) => ({
-    type: LOAD_ORDER_LIST_SUCCESS,
+const ShopbackActionCreator = {
+  loadShopbackData: (payload) => ({
+    type: LOAD_SHOPBACK_DATA,
     payload,
   }),
-  getOrderListError: (error) => ({
-    type: LOAD_ORDER_LIST_ERROR,
-    error,
+
+  updateFirstCategory: (payload) => ({
+    type: UPDATE_SELECTED_CATEGORY,
+    payload,
   })
 }
 
-export default OrderListActionCreator;
+export default ShopbackActionCreator;

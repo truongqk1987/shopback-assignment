@@ -1,5 +1,5 @@
-import ShopbackReducer from 'reducers/ShopbackReducer';
+import shopbackReducer from 'reducers/shopbackReducer';
 
 export default {
-  shopback: ShopbackReducer,
+  shopback: shopbackReducer,
 }
