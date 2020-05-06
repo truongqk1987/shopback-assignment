@@ -7,7 +7,7 @@ import { loadShopbackData } from 'actions/ShopbackActionCreator';
 import {
   CategoryList,
   StoreList
-} from './components';
+} from 'components';
 
 const stylsheet = {
   App: {
