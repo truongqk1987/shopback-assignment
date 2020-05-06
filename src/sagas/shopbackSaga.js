@@ -10,9 +10,9 @@ const SHOPBACK_API = 'https://gist.githubusercontent.com/poepanda/004af517163df9
 // Our worker Saga: will perform the async increment task
 export function* loadShopbackData() {
     try {
-        const dataList = yield call(fetch, SHOPBACK_API);
-        console.log(dataList);
-        yield put({ type: LOAD_SHOPBACK_DATA_SUCCESSFUL, dataList })
+        const dataResponse = yield call(fetch, SHOPBACK_API);
+        const data = yield dataResponse.json();
+        yield put({ type: LOAD_SHOPBACK_DATA_SUCCESSFUL, data })
     } catch(error) {
         yield put({ type: LOAD_SHOPBACK_DATA_FAILED, error })
     }
