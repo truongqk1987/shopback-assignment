@@ -13,7 +13,7 @@ const StoreList = ({ stores, category, classes }) => {
             filteredStores.map(store => <Col key={store.id} xs={8} lg={4}><Store {...store} /></Col>)
         }
         <Col className="all-stores" xs={8} lg={0} >
-            <a href="https://www.goshopback.vn/tat-ca-doi-tac">View All Popular Stores</a>
+            <a href="https://www.goshopback.vn/tat-ca-doi-tac">All Stores</a>
         </Col>
     </Row>
 }
