@@ -11,7 +11,8 @@ import stylesheet from './stylesheet';
 import {
   CategoryList,
   StoreList,
-  Scrollbar
+  Scrollbar,
+  ShowAllStoresButton
 } from 'components';
 
 const AppContainer = ({ classes }) => {
@@ -36,6 +37,7 @@ const AppContainer = ({ classes }) => {
       <CategoryList onChange={onCategoryChanged} categories={categories} activeCategory={category || categories[0]}/>
     </Scrollbar>
     <StoreList category={category || categories[0]} stores={stores} />
+    <ShowAllStoresButton/>
   </div>
 }
 

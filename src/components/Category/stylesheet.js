@@ -8,9 +8,9 @@ export default {
         flexGrow: 1,
         borderLeft: '1px solid #f5f5f5',
         borderRight: '1px solid #f5f5f5',
+        cursor: 'pointer',
         '&.isActive': {
             color: 'red',
-            borderBottom: '2px solid red'
         },
         '&:first-child, &:last-child': {
             borderLeft: 0,
@@ -28,7 +28,10 @@ export default {
             '&:hover': {
                 color: 'red',
                 borderBottom: '2px solid red'
-            }
+            },
+            '&.isActive': {
+                borderBottom: '2px solid red'
+            },
         }
         
     }

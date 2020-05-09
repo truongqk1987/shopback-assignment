@@ -1,15 +1,18 @@
 import React from 'react';
 import { Row, Col } from 'antd';
+import injectSheet from 'react-jss';
 
 import { Store } from 'components';
 
-const StoreList = ({ stores, category }) => {
+import stylesheet from './stylesheet';
+
+const StoreList = ({ stores, category, classes }) => {
     const filteredStores = stores.filter(store => store.categoryId === category.id)
-    return <Row>
+    return <Row className={classes.StoreList}>
         {
             filteredStores.map(store => <Col key={store.id} xs={8} lg={4}><Store {...store} /></Col>)
         }
     </Row>
 }
 
-export default StoreList;
+export default injectSheet(stylesheet)(StoreList);

@@ -5,6 +5,10 @@ export default {
         flexDirection: 'column',
         alignItems: 'center',
         paddingTop: '1rem',
+        cursor: 'pointer',
+        '&:hover': {
+            background: 'rgba(64,72,90,.02)',
+        },
         '&>a': {
             display: 'block',
             height: '35px',
