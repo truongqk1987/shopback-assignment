@@ -5,10 +5,10 @@ const shopbackReducer = (state={}, action) => {
     case LOAD_SHOPBACK_DATA: 
       return { ...state }
     case LOAD_SHOPBACK_DATA_SUCCESSFUL: 
-      const { categories = [], stores = []} = action.payload;
+      const { categories = [], stores = []} = action.data;
       return { ...state, categories, stores }
     case LOAD_SHOPBACK_DATA_FAILED: 
-      return { ...state }
+      return { ...state, error: action.error }
     case UPDATE_SELECTED_CATEGORY:
       return { ...state }
     default:

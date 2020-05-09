@@ -1,40 +1,42 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import injectSheet from 'react-jss';
 import { useDispatch, useSelector } from 'react-redux';
+import isEmpty from 'lodash.isempty';
 
 import { loadShopbackData } from 'actions/ShopbackActionCreator';
 import { categoriesSelector, storesSelector } from 'reducers/shopbackReducer'
 
+import stylesheet from './stylesheet';
+
 import {
   CategoryList,
-  StoreList
+  StoreList,
+  Scrollbar
 } from 'components';
 
-const stylsheet = {
-  App: {
-
-  }
-}
-
-const AppContainer = (props) => {
-  const [category, setCategory] = useState("");
+const AppContainer = ({ classes }) => {
+  const [category, setCategory] = useState(null);
   const dispatch = useDispatch();
 
-  const categories = useSelector(categoriesSelector)
-  const stores = useSelector(storesSelector)
+  const categories = useSelector(categoriesSelector) || [];
+  const stores = useSelector(storesSelector) || [];
 
   const onCategoryChanged = useCallback((category) => {
-    setCategory(Object.assign({}, category));
+    setCategory({...category});
   }, [])
 
   useEffect(() => {
     dispatch(loadShopbackData());
   }, [dispatch])
 
-  return <>
-    <CategoryList onChange={onCategoryChanged} categories={categories} />
-    <StoreList category={category} stores={stores} />
-  </>
+  if (isEmpty(categories)) return null;
+
+  return <div className={classes.App}>
+    <Scrollbar>
+      <CategoryList onChange={onCategoryChanged} categories={categories} activeCategory={category || categories[0]}/>
+    </Scrollbar>
+    <StoreList category={category || categories[0]} stores={stores} />
+  </div>
 }
 
-export default injectSheet(stylsheet)(AppContainer);
+export default injectSheet(stylesheet)(AppContainer);
