@@ -2,23 +2,9 @@
 import React, { useCallback } from 'react';
 import injectSheet from 'react-jss';
 
+import { getSVGUrl } from 'utils';
+
 import stylesheet from './stylesheet';
-
-const CATEGORY_ICON_MAP = {
-    popular: 'fire',
-    dining: 'burger',
-    travel: 'plane',
-    electronics: 'laptop',
-    fashion: 'tshirt',
-    groceries: 'lettuce',
-    'health-beauty': 'lipstick',
-    'home-living': 'couch',
-    'sports-outdoors': 'basketball'
-}
-
-const getSVGUrl = (categoryShortName) => {
-    return `https://cloud.shopback.com/raw/upload/static/images/icon/core/${CATEGORY_ICON_MAP[categoryShortName]}.svg`
-}
 
 const Category = ({ activeCategory, id, name, shortname = 'popular', onCategoryClick, classes }) => {
     const onClick = useCallback(() => {
