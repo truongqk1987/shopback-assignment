@@ -1,16 +1,18 @@
-import { LOAD_SHOPBACK_DATA, UPDATE_SELECTED_CATEGORY, LOAD_SHOPBACK_DATA_SUCCESSFUL, LOAD_SHOPBACK_DATA_FAILED } from 'actions/ShopbackActionCreator';
+import { UPDATE_FIRST_CATEGORY, LOAD_SHOPBACK_DATA_SUCCESSFUL, LOAD_SHOPBACK_DATA_FAILED } from 'actions/ShopbackActionCreator';
 
-const shopbackReducer = (state={}, action) => {
+export const INITIAL_STATE = {
+  firstCategoryId: -1
+};
+
+const shopbackReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case LOAD_SHOPBACK_DATA: 
-      return { ...state }
     case LOAD_SHOPBACK_DATA_SUCCESSFUL: 
       const { categories = [], stores = []} = action.data;
       return { ...state, categories, stores }
     case LOAD_SHOPBACK_DATA_FAILED: 
       return { ...state, error: action.error }
-    case UPDATE_SELECTED_CATEGORY:
-      return { ...state }
+    case UPDATE_FIRST_CATEGORY:
+      return { ...state, firstCategoryId: action.payload.id }
     default:
       return state;
   }
