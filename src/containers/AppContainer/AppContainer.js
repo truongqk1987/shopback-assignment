@@ -23,6 +23,8 @@ const AppContainer = ({ classes }) => {
   const stores = useSelector(storesSelector) || [];
 
   const onCategoryChanged = useCallback((category) => {
+    const scrollbarSelector = document.querySelector('#categories-scrollbar');
+    scrollbarSelector.scrollLeft = 0;
     setCategory({...category});
   }, [])
 
@@ -33,7 +35,7 @@ const AppContainer = ({ classes }) => {
   if (isEmpty(categories)) return null;
 
   return <div className={classes.App}>
-    <Scrollbar>
+    <Scrollbar id="categories-scrollbar">
       <CategoryList onChange={onCategoryChanged} categories={categories} activeCategory={category || categories[0]}/>
     </Scrollbar>
     <StoreList category={category || categories[0]} stores={stores} />

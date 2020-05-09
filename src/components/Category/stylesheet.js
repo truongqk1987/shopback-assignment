@@ -24,7 +24,7 @@ export default {
         '&:hover': {
             color: 'red',
         },
-        '@media screen and (min-width: 1280px)': {
+        '@media only screen and (min-width: 1280px)': {
             '&:hover': {
                 color: 'red',
                 borderBottom: '2px solid red'
@@ -32,6 +32,10 @@ export default {
             '&.isActive': {
                 borderBottom: '2px solid red'
             },
+        },
+        '@media only screen and (max-width: 600px)': {
+            '&': { flexDirection: 'row' },
+            '&>img': { paddingRight: '0.5rem' }
         }
         
     }
