@@ -1,18 +1,21 @@
 import { UPDATE_FIRST_CATEGORY, LOAD_SHOPBACK_DATA_SUCCESSFUL, LOAD_SHOPBACK_DATA_FAILED } from 'actions/ShopbackActionCreator';
 
+import { sortCategoryByHistory } from 'utils';
+
 export const INITIAL_STATE = {
-  firstCategoryId: -1
+  firstCategory: null
 };
 
 const shopbackReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LOAD_SHOPBACK_DATA_SUCCESSFUL: 
       const { categories = [], stores = []} = action.data;
-      return { ...state, categories, stores }
+      return { ...state, categories: sortCategoryByHistory(categories), stores }
     case LOAD_SHOPBACK_DATA_FAILED: 
       return { ...state, error: action.error }
     case UPDATE_FIRST_CATEGORY:
-      return { ...state, firstCategoryId: action.payload.id }
+      localStorage.setItem('first-category', JSON.stringify(action.payload));
+      return { ...state, firstCategory: action.payload }
     default:
       return state;
   }
@@ -20,5 +23,4 @@ const shopbackReducer = (state = INITIAL_STATE, action) => {
 
 export const categoriesSelector = (state) => state.shopback.categories;
 export const storesSelector = (state) => state.shopback.stores;
-
 export default shopbackReducer;

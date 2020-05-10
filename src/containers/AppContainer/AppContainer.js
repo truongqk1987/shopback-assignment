@@ -3,7 +3,7 @@ import injectSheet from 'react-jss';
 import { useDispatch, useSelector } from 'react-redux';
 import isEmpty from 'lodash.isempty';
 
-import { loadShopbackData } from 'actions/ShopbackActionCreator';
+import { loadShopbackData, updateFirstCategory } from 'actions/ShopbackActionCreator';
 import { categoriesSelector, storesSelector } from 'reducers/shopbackReducer'
 
 import stylesheet from './stylesheet';
@@ -21,12 +21,14 @@ export const AppContainer = ({ classes }) => {
 
   const categories = useSelector(categoriesSelector) || [];
   const stores = useSelector(storesSelector) || [];
+  
 
   const onCategoryChanged = useCallback((category) => {
     const scrollbarSelector = document.querySelector('#categories-scrollbar');
     scrollbarSelector.scrollLeft = 0;
     setCategory({...category});
-  }, [])
+    dispatch(updateFirstCategory(category))
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(loadShopbackData());

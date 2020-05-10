@@ -11,7 +11,7 @@ describe('shopback reducer', () => {
     }) 
 
     it('should handle LOAD_SHOPBACK_DATA_SUCCESSFUL', () => {
-        expect(reducer({ firstCategoryId: 1 }, {
+        expect(reducer({ firstCategory: null }, {
             type: LOAD_SHOPBACK_DATA_SUCCESSFUL, 
             data: {
                 categories: [],
@@ -20,19 +20,19 @@ describe('shopback reducer', () => {
         })).toEqual({
             categories: [],
             stores: [],
-            firstCategoryId: 1
+            firstCategory: null
         })
     })
 
     it('should handle LOAD_SHOPBACK_DATA_FAILED', () => {
-        expect(reducer({ firstCategoryId: 1 }, {
+        expect(reducer({ firstCategory: null }, {
             type: LOAD_SHOPBACK_DATA_FAILED, 
             error: {
                 status: 400,
                 messageId: 'eror.400' 
             } 
         })).toEqual({
-            firstCategoryId: 1,
+            firstCategory: null,
             error: {
                 status: 400,
                 messageId: 'eror.400'
@@ -45,7 +45,7 @@ describe('shopback reducer', () => {
             type: UPDATE_FIRST_CATEGORY, 
             payload: { id: 1 }
         })).toEqual({
-            firstCategoryId: 1
+            firstCategory: null
         } )
     })
 })
