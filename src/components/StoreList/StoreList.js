@@ -6,7 +6,7 @@ import { Store } from 'components';
 
 import stylesheet from './stylesheet';
 
-const StoreList = ({ stores, category, classes }) => {
+export const StoreList = ({ stores, category, classes }) => {
     const filteredStores = stores.filter(store => store.categoryId === category.id)
     return <Row className={classes.StoreList}>
         {

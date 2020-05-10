@@ -6,7 +6,7 @@ import { getSVGUrl } from 'utils';
 
 import stylesheet from './stylesheet';
 
-const Category = ({ activeCategory, id, name, shortname = 'popular', onCategoryClick, classes }) => {
+export const Category = ({ activeCategory, id, name, shortname = 'popular', onCategoryClick, classes }) => {
     const onClick = useCallback(() => {
         onCategoryClick({ id });
     }, [id, onCategoryClick])

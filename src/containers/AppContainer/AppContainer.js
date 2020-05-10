@@ -15,7 +15,7 @@ import {
   ShowAllStoresButton
 } from 'components';
 
-const AppContainer = ({ classes }) => {
+export const AppContainer = ({ classes }) => {
   const [category, setCategory] = useState(null);
   const dispatch = useDispatch();
 

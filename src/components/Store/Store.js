@@ -6,7 +6,7 @@ import {optimizeStoreDisplayTex} from 'utils';
 
 import stylesheet from './stylesheet';
 
-const Store = ({ displayText, alt, logoUrl, oldDisplayText, classes, shortname }) => {
+export const Store = ({ displayText, alt, logoUrl, oldDisplayText, classes, shortname }) => {
     
     return <div className={classes.Store}>
         <a title={alt} href={`https://www.goshopback.vn${shortname}`}>

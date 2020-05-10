@@ -29,7 +29,7 @@ describe('shopback reducer', () => {
             type: LOAD_SHOPBACK_DATA_FAILED, 
             error: {
                 status: 400,
-                messageId: 'eror.400'
+                messageId: 'eror.400' 
             } 
         })).toEqual({
             firstCategoryId: 1,
