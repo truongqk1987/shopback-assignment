@@ -41,11 +41,11 @@ describe('shopback reducer', () => {
     })
 
     it('should handle UPDATE_FIRST_CATEGORY', () => {
-        expect(reducer({ firstCategoryId: -1 }, {
+        expect(reducer({ firstCategory: null }, { 
             type: UPDATE_FIRST_CATEGORY, 
             payload: { id: 1 }
         })).toEqual({
-            firstCategory: null
+            firstCategory: { id: 1 }
         } )
     })
 })
