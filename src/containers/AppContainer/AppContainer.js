@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import isEmpty from 'lodash.isempty';
 
 import { loadShopbackData, updateFirstCategory } from 'actions/ShopbackActionCreator';
-import { categoriesSelector, storesSelector } from 'reducers/shopbackReducer'
+import { categoriesSelector, storesSelector } from 'reducers/ShopbackReducer'
 
 import stylesheet from './stylesheet';
 
